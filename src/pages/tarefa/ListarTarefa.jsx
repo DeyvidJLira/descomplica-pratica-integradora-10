@@ -18,6 +18,8 @@ import Modal from '@mui/material/Modal';
 import CriarTarefa from './CriarTarefa';
 import EditarTarefa from './EditarTarefa';
 
+import util from './util';
+
 //A função abaixo é usada para criar o array contendo os dados iniciais da listagem de tarefas.
 function createData(
   idTarefa: number,
@@ -95,11 +97,11 @@ const ListarTarefa = () => {
                 <TableRow>
                     <TableCell>#</TableCell>
                     <TableCell>Título</TableCell>
-                    <TableCell align="right">Descrição</TableCell>
-                    <TableCell align="right">Data de Início</TableCell>
-                    <TableCell align="right">Data de Finalização</TableCell>
-                    <TableCell align="right">Status</TableCell>
-                    <TableCell align="right">Recurso</TableCell>
+                    <TableCell align="left">Descrição</TableCell>
+                    <TableCell align="left">Data de Início</TableCell>
+                    <TableCell align="left">Data de Finalização</TableCell>
+                    <TableCell align="left">Status</TableCell>
+                    <TableCell align="left">Recurso</TableCell>
                     <TableCell align="left"></TableCell>
                     <TableCell align="left"></TableCell>
                 </TableRow>
@@ -116,11 +118,11 @@ const ListarTarefa = () => {
                       <TableCell component="th" scope="row">
                           {row.tituloTarefa}
                       </TableCell>
-                      <TableCell align="right">{row.descricaoTarefa}</TableCell>
-                      <TableCell align="right">{row.inicioTarefa}</TableCell>
-                      <TableCell align="right">{row.fimTarefa}</TableCell>
-                      <TableCell align="right">{row.statusTarefa}</TableCell>
-                      <TableCell align="right">{row.recursoTarefa}</TableCell>
+                      <TableCell align="left">{row.descricaoTarefa}</TableCell>
+                      <TableCell align="left">{util.formatDateToBrl(row.inicioTarefa)}</TableCell>
+                      <TableCell align="left">{util.formatDateToBrl(row.fimTarefa)}</TableCell>
+                      <TableCell align="left">{row.statusTarefa}</TableCell>
+                      <TableCell align="left">{row.recursoTarefa}</TableCell>
                       <TableCell align="center">
                         <Button variant="contained" color="success" onClick={() => handleEditar(row.idTarefa)}><EditIcon fontSize="small" /></Button>            
                       </TableCell>
@@ -134,8 +136,7 @@ const ListarTarefa = () => {
             </TableContainer>
         </CardContent>
         <CardActions>
-            <Button size="small" variant="contained" onClick={handleOpen}>Criar Tarefa</Button>
-            <Button size="small" variant="outlined">Cancelar</Button>
+          <Button size="small" variant="contained" onClick={handleOpen}>Criar Tarefa</Button>
       </CardActions> 
     </Card>
     <div>
